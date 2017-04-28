@@ -1,0 +1,18 @@
+<h2>Users</h2>
+<hr />
+<table class="table table-hover table-striped table-sortable">
+  <thead>
+    <tr>
+      <th *ngFor="let column of columns" [class]="selectedClass(column.variable)" (click)="changeSorting(column.variable)">{{column.displayName}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users; let i = index; let even = even; let odd = odd;"
+        [ngClass]="{ odd: odd, even: even }">
+      <td>{{user._id}}</td>
+      <td>{{user.name}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.email}}</td>
+    </tr>
+  </tbody>
+</table>

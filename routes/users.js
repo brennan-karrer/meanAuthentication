@@ -5,6 +5,14 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const config = require('../config/database');
 
+// Return a list of users
+router.get('/', (req, res, next) => {
+  User.getAllUsers((err, users) => {
+    if (err) throw err;
+    res.json(users);
+  });
+});
+
 // Register
 router.post('/register', (req, res, next) => {
   let newUser = new User({
