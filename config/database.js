@@ -1,5 +1,4 @@
 module.exports = {
-  database: 'mongodb://localhost:27017/meanauth',
-  // database: 'mongodb://admin:admin@ds049466.mlab.com:49466/meanauth',
+  database: 'mongodb://admin:admin@ds123311.mlab.com:23311/express-server',
   secret: 'secret'
 };

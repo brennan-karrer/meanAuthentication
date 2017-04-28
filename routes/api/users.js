@@ -1,17 +1,27 @@
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
-const User = require('../models/user');
-const config = require('../config/database');
+const User = require('../../models/user');
+const config = require('../../config/database');
+
+router.get('/', (req, res, next) => {
+  User.find({})
+    .exec((err, users) => {
+      if (err) {
+        console.error('Error retrieving users due to: ' + err);
+      } else {
+        res.json(users);
+      }
+    })
+});
 
 // Return a list of users
-router.get('/', (req, res, next) => {
-  User.getAllUsers((err, users) => {
-    if (err) throw err;
-    res.json(users);
-  });
-});
+// router.get('/', (req, res, next) => {
+//   User.getAllUsers((err, users) => {
+//     if (err) throw err;
+//     res.json(users);
+//   });
+// });
 
 // Register
 router.post('/register', (req, res, next) => {
